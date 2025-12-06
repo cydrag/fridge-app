@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fridge_db
+    username: fridge_user
+    password: fridge_pass
+  flyway:
+    enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+app:
+  security:
+    jwtSecret: "*4EP7)J038Bh'%4wbzw7|'t4%Qkc5{I&"
+    jwtRefreshExpirationMs: 2592000000
+    jwtExpirationMs: 86400000  # 1 day
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus

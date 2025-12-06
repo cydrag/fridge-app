@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:18-alpine
+    container_name: fridge_db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: fridge_db
+      POSTGRES_USER: fridge_user
+      POSTGRES_PASSWORD: fridge_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - fridge-network
+
+volumes:
+  postgres_data:
+
+networks:
+  fridge-network:
+    driver: bridge
