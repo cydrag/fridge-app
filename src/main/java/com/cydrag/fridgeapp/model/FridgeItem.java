@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -44,6 +45,10 @@ public class FridgeItem {
 
     @Column(name = "best_before", nullable = false)
     private LocalDate bestBefore;
+
+    @Version
+    @Column(nullable = false)
+    private Long version;
 
     public FridgeItem(String productName, LocalDate bestBefore, Fridge fridge) {
         this.productName = productName;
