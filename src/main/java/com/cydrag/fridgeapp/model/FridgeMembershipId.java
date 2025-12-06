@@ -12,7 +12,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class FridgeMemberId implements Serializable {
+public class FridgeMembershipId implements Serializable {
 
     private UUID fridgeId;
     private UUID userId;

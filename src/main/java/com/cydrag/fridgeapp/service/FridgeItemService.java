@@ -3,7 +3,7 @@ package com.cydrag.fridgeapp.service;
 import com.cydrag.fridgeapp.model.Fridge;
 import com.cydrag.fridgeapp.model.FridgeItem;
 import com.cydrag.fridgeapp.repository.FridgeItemRepository;
-import com.cydrag.fridgeapp.repository.FridgeMemberRepository;
+import com.cydrag.fridgeapp.repository.FridgeMembershipRepository;
 import com.cydrag.fridgeapp.repository.FridgeRepository;
 import com.cydrag.fridgeapp.service.model.AddItemsCommand;
 import com.cydrag.fridgeapp.service.model.ItemCommand;
@@ -21,7 +21,7 @@ import java.util.UUID;
 public class FridgeItemService {
 
     private final FridgeRepository fridgeRepository;
-    private final FridgeMemberRepository fridgeMemberRepository;
+    private final FridgeMembershipRepository fridgeMembershipRepository;
     private final FridgeItemRepository fridgeItemRepository;
 
     @Transactional
@@ -29,7 +29,7 @@ public class FridgeItemService {
         UUID fridgeId = command.fridgeId();
         UUID userId = command.userId();
 
-        if (!fridgeMemberRepository.existsByFridgeIdAndUserId(fridgeId, userId)) {
+        if (!fridgeMembershipRepository.existsByFridgeIdAndUserId(fridgeId, userId)) {
             throw new AccessDeniedException("You don't have permission to access this fridge.");
         }
 

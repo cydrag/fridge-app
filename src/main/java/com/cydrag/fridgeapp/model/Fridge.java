@@ -40,7 +40,7 @@ public class Fridge {
     private Instant createdAt;
 
     @OneToMany(mappedBy = "fridge", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<FridgeMember> members = new HashSet<>();
+    private Set<FridgeMembership> members = new HashSet<>();
 
     @OneToMany(mappedBy = "fridge", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<FridgeItem> items = new HashSet<>();
@@ -53,7 +53,7 @@ public class Fridge {
     }
 
     public void addMember(User user) {
-        FridgeMember membership = new FridgeMember(this, user);
+        FridgeMembership membership = new FridgeMembership(this, user);
         members.add(membership);
     }
 

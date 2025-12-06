@@ -3,8 +3,6 @@ package com.cydrag.fridgeapp.model;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -22,7 +20,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "user")
+@Table(name = "`user`")
 @NoArgsConstructor
 @Getter
 @Setter
@@ -43,7 +41,7 @@ public class User {
     private Instant createdAt;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<FridgeMember> memberships = new HashSet<>();
+    private Set<FridgeMembership> memberships = new HashSet<>();
 
     public User(String email, String password) {
         this.email = email;

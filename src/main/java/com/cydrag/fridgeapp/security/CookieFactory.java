@@ -10,14 +10,14 @@ public class CookieFactory {
     public static final String REFRESH_TOKEN_COOKIE = "refresh_token";
 
     @Value("${app.security.jwtRefreshExpirationMs}")
-    private int refreshDurationMs;
+    private long jwtRefreshExpirationMs;
 
     public ResponseCookie createRefreshTokenCookie(String token) {
         return ResponseCookie.from(REFRESH_TOKEN_COOKIE, token)
                 .httpOnly(true)
                 .secure(true)
                 .path("/api/auth")
-                .maxAge(refreshDurationMs / 1000)
+                .maxAge(jwtRefreshExpirationMs / 1000)
                 .sameSite("Strict")
                 .build();
     }

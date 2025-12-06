@@ -1,6 +1,5 @@
 package com.cydrag.fridgeapp.security;
 
-import com.cydrag.fridgeapp.model.User;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;

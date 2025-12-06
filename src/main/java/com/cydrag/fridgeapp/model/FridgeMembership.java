@@ -17,15 +17,15 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.Instant;
 
 @Entity
-@Table(name = "fridge_member")
+@Table(name = "fridge_membership")
 @NoArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode(of = { "fridge", "user" })
-public class FridgeMember {
+public class FridgeMembership {
 
     @EmbeddedId
-    private FridgeMemberId id;
+    private FridgeMembershipId id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("fridgeId")
@@ -41,8 +41,8 @@ public class FridgeMember {
     @Column(name = "joined_at", nullable = false, updatable = false)
     private Instant joinedAt;
 
-    public FridgeMember(Fridge fridge, User user) {
-        this.id = new FridgeMemberId(fridge.getId(), user.getId());
+    public FridgeMembership(Fridge fridge, User user) {
+        this.id = new FridgeMembershipId(fridge.getId(), user.getId());
         this.fridge = fridge;
         this.user = user;
     }

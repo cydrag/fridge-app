@@ -15,7 +15,7 @@ CREATE TABLE "fridge" (
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
-CREATE TABLE "fridge_member" (
+CREATE TABLE "fridge_membership" (
     fridge_id UUID NOT NULL REFERENCES "fridge"(id) ON DELETE CASCADE,
     user_id UUID NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,
     joined_at TIMESTAMP NOT NULL DEFAULT NOW(),
@@ -27,7 +27,8 @@ CREATE TABLE "fridge_item" (
     fridge_id UUID NOT NULL REFERENCES "fridge"(id) ON DELETE CASCADE,
     product_name VARCHAR(255) NOT NULL,
     stored_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    best_before DATE NOT NULL
+    best_before DATE NOT NULL,
+    version BIGINT NOT NULL DEFAULT 1
 );
 
 CREATE TABLE "refresh_token" (

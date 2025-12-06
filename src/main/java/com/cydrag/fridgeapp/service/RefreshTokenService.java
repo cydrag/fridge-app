@@ -7,7 +7,7 @@ import com.cydrag.fridgeapp.repository.RefreshTokenRepository;
 import com.cydrag.fridgeapp.repository.UserRepository;
 import com.cydrag.fridgeapp.security.JwtUtils;
 import com.cydrag.fridgeapp.service.model.AuthResult;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -19,7 +19,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Slf4j
 public class RefreshTokenService {
 

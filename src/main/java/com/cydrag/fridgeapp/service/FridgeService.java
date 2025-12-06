@@ -4,7 +4,7 @@ import com.cydrag.fridgeapp.exception.ResourceNotFoundException;
 import com.cydrag.fridgeapp.model.Fridge;
 import com.cydrag.fridgeapp.model.FridgeOwnershipType;
 import com.cydrag.fridgeapp.model.User;
-import com.cydrag.fridgeapp.repository.FridgeMemberRepository;
+import com.cydrag.fridgeapp.repository.FridgeMembershipRepository;
 import com.cydrag.fridgeapp.repository.FridgeRepository;
 import com.cydrag.fridgeapp.repository.UserRepository;
 import com.cydrag.fridgeapp.service.model.CreateFridgeCommand;
@@ -21,7 +21,7 @@ public class FridgeService {
 
     private final FridgeRepository fridgeRepository;
     private final UserRepository userRepository;
-    private final FridgeMemberRepository fridgeMemberRepository;
+    private final FridgeMembershipRepository fridgeMembershipRepository;
 
     @Transactional
     public Fridge createFridge(CreateFridgeCommand createFridgeCommand) {
@@ -42,7 +42,7 @@ public class FridgeService {
 
         if (fridge.getType() == FridgeOwnershipType.PRIVATE) {
 
-            boolean hasAccess = fridgeMemberRepository.existsByFridgeIdAndUserId(fridgeId, userId);
+            boolean hasAccess = fridgeMembershipRepository.existsByFridgeIdAndUserId(fridgeId, userId);
 
             if (!hasAccess) {
                 throw new AccessDeniedException("You are not a member of this fridge.");
